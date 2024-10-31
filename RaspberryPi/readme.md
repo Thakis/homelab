@@ -60,3 +60,11 @@ docker run -it -d \
 	--rolling-restart \
 	--include-stopped \
 	--schedule "0 0 2 * * *"
+
+
+12. install pihole + Unbound
+- Template "Pi-Hole-Unbound"
+https://github.com/chriscrowe/docker-pihole-unbound/tree/main/one-container
+- Full Guide PiHole: https://github.com/RPiList/specials/tree/master/Anleitungen
+- Blocklisten: https://github.com/RPiList/specials/tree/master/Blocklisten
+-- https://github.com/RPiList/specials/blob/master/Blocklisten.md
