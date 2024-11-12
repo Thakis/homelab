@@ -60,7 +60,7 @@ Step-by-Step Installation
 
         Add the following line to mount the NAS:
 
-        //<NAS_IP>/jellyfin /mnt/jellyfin cifs username=<username>,password=<password>,uid=1000,gid=1000 0 0
+        //<NAS_IP>/home /mnt/jellyfin cifs username=<username>,password=<password>,uid=1000,gid=1000 0 0
 
     Replace <NAS_IP>, <username>, and <password> with your NAS details .
 
