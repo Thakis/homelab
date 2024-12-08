@@ -22,9 +22,8 @@
    - **Docker Services**: Includes various containerized applications, such as:
      - Media servers (Plex, Jellyfin, etc.).
      - File sharing and synchronization tools (e.g., Nextcloud).
-     - Network utilities (Pi-hole + Unbound for DNS filtering).
      - Monitoring tools (Grafana, Prometheus).
-   - **Virtual Machines**: A VMM instance hosts additional services or operating systems for tasks like testing or isolated operations.
+   - **Virtual Machines**: VMM instances host additional services or operating systems for tasks like testing or isolated operations.
 
 ### 4. **Networking Components**
    - **Routing and DNS**: Local DNS resolution and network-level ad-blocking (via Pi-hole + Unbound).
