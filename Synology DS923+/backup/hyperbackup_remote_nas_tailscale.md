@@ -1,8 +1,4 @@
-```markdown
-# Setting Up Remote Hyper Backup Without Cloud Services
-
-[![Watch the Tutorial](https://img.youtube.com/vi/D8lJcf0V_-4/0.jpg)](https://www.youtube.com/watch?v=D8lJcf0V_-4)  
-[Watch the video tutorial here](https://www.youtube.com/watch?v=D8lJcf0V_-4)
+# Setting Up Remote Hyper Backup Without Cloud Services https://www.youtube.com/watch?v=D8lJcf0V_-4
 
 ---
 
