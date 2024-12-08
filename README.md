@@ -34,7 +34,7 @@
    - Laptops, desktops, and additional devices are integrated for seamless productivity.
    - **Backup Solutions**: Backups are routed to the NAS for data protection.
 
-### 6. **Remote Access and Cloud Integration**
+### 6. **Remote Access and external Backups**
    - **VPN**: Secure remote access is provided using WireGuard.
    - **External Backup**: Data redundancy is maintained through services like Hyper Backup by Synology to an external NAS.
    - **Monitoring**: Tools like Grafana and Prometheus visualize system health, resource usage, and logs.
