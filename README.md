@@ -154,4 +154,4 @@
 
 This guide is a compilation of community resources. Always test in a safe environment and understand each step before implementation.
 
-Claude.ai was used to write the repository. Unstuckstudy.com was used to summarize YouTube videos.
+Claude.ai was used to help me to write the repository. Unstuckstudy.com was used to summarize some YouTube videos.
