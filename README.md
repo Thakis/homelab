@@ -149,6 +149,7 @@
 - [Portainer Documentation](https://documentation.portainer.io/)
 - [NGINX Proxy Manager GitHub](https://github.com/NginxProxyManager/nginx-proxy-manager)
 - Reddit communities: r/homelab, r/selfhosted
+-  [Bitdoze - Best 100+ Docker Containers for Home Server](https://www.bitdoze.com/docker-containers-home-server/)
 
 ## Disclaimer
 
