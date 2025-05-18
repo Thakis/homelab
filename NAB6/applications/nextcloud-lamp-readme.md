@@ -162,3 +162,81 @@ nano /var/www/nextcloud/config/config.php
 "default_language" => "de", 
 "default_locale" => "de", 
 'default_phone_region' => 'DE',
+
+
+---
+
+ [Nextcloud Top 5 Security Essentials - So sicherst du deinen Nextcloud Server ab!](https://www.youtube.com/watch?v=0-hxlvR6f9g)
+
+ #### Nextcloud Top 5 Security Essentials ####
+
+#### Fail2Ban ####
+
+## install fail2ban ##
+apt install fail2ban
+
+## create fail2ban filter ##
+nano /etc/fail2ban/filter.d/nextcloud.conf
+
+[Definition]
+_groupsre = (?:(?:,?\s*"\w+":(?:"[^"]+"|\w+))*)
+failregex = ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Login failed:
+            ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Trusted domain error.
+datepattern = ,?\s*"time"\s*:\s*"%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?"
+
+## create fail2ban jail ##
+nano /etc/fail2ban/jail.d/nextcloud.local
+
+[nextcloud]
+backend = auto
+enabled = true
+port = 80,443
+protocol = tcp
+filter = nextcloud
+maxretry = 5
+bantime = 86400
+findtime = 43200
+logpath = /home/data/nextcloud.log
+
+## restart fail2ban ##
+service fail2ban restart
+
+## check status ##
+fail2ban-client status nextcloud
+
+##unban ip ##
+fail2ban-client set nextcloud unbanip <ipadress>
+
+
+
+#### Auto Logout ####
+
+nano /var/www/nextcloud/config/config.php
+
+'remember_login_cookie_lifetime' => 1296000,
+'session_lifetime' => 1800,
+'session_keepalive' => false,
+'auto_logout' => true,
+
+
+#### AntiVirus for Files ####
+
+## Pakete installieren ##
+apt install clamav clamav-freshclam clamav-daemon -y
+
+## Stoppen Sie ClamAV und aktualisieren Sie die Virendatenbanken ##
+
+service clamav-freshclam stop
+freshclam
+service clamav-freshclam start
+
+## Passen Sie die clamav Konfiguration an, um größere Dateien(50MB) und Container-Dateien mit bis zu 25 Unterverzeichnissen scannen zu können ##
+
+cp /etc/clamav/clamd.conf /etc/clamav/clamd.conf.bak
+sed -i "s/MaxFileSize.*/MaxFileSize 50M/" /etc/clamav/clamd.conf
+sed -i "s/MaxDirectoryRecursion.*/MaxDirectoryRecursion 25/" /etc/clamav/clamd.conf
+sed -i "s/PCREMaxFileSize.*/PCREMaxFileSize 50M/" /etc/clamav/clamd.conf
+sed -i "s/StreamMaxLength.*/StreamMaxLength 50M/" /etc/clamav/clamd.conf
+
+## Im Anschluss daran werden die ClamAV relevanten Dienste neu gestartet ##
+service clamav-freshclam restart && service clamav-daemon restart
