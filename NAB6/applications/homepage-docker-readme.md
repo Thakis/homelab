@@ -30,9 +30,15 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     volumes:
-      - ./config:/app/config
+      - /root/homepage/config:/app/config
+      - /root/homepage/images:/app/public/images
+      - /root/homepage/icons:/app/public/icons
     ports:
       - 3000:3000
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: gethomepage.dev,192.168.178.215:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      PUID: $PUID
+      PGID: $PGID
     restart: unless-stopped
 ```
 
