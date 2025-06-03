@@ -2,7 +2,7 @@
 
 > This detailed repository provides a clear representation of a robust but still beginner friendly homelab setup that balances storage, network management, and application hosting with security and efficiency.
 
-![Homelab_20250603](https://github.com/user-attachments/assets/11f38003-79ef-487c-ac85-aeeb94d59335)
+![Homelab_20250603](https://github.com/user-attachments/assets/1fcd5657-401c-4b3b-a555-5d0db72f5862)
 
 > The image showcases a comprehensive homelab network and system architecture diagram, including several interconnected components, applications, and services. Below is a detailed breakdown of the different sections visible in the diagram:
 
