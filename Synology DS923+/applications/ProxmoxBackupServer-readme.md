@@ -1,6 +1,6 @@
 # Proxmox Backup Server Installation on Synology NAS
 
-This guide summarizes the YouTube video **"Proxmox Backup Server Installation on Synology NAS"**, which provides a detailed walkthrough for setting up Proxmox Backup Server (PBS) on a Synology NAS. It is aimed at users who want to enhance their backup infrastructure by integrating PBS into their existing Synology environment.
+This guide summarizes the YouTube video **[Proxmox Backup Server Installation on Synology NAS](https://www.youtube.com/watch?v=abf2D9ikkn8)**, which provides a detailed walkthrough for setting up Proxmox Backup Server (PBS) on a Synology NAS. It is aimed at users who want to enhance their backup infrastructure by integrating PBS into their existing Synology environment.
 
 ---
 
