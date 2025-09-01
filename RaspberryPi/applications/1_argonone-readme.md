@@ -26,7 +26,7 @@ sudo nano /etc/argononed.conf
 In the configuration file, you can set fan speeds based on temperature:
 
 ```
-55=10    # At 55°C, set fan to 10% speed
+55=30    # At 55°C, set fan to 10% speed
 60=55    # At 60°C, set fan to 55% speed
 65=100   # At 65°C, set fan to 100% speed
 ```
