@@ -1,4 +1,3 @@
-```markdown
 # Paperless-AI Installation Guide
 
 ## Overview
@@ -103,4 +102,3 @@ docker volume rm paperless-ai_data
 ## Support
 
 For questions or issues, visit the GitHub repository or create an issue.
-```

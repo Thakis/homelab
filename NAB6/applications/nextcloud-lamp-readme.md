@@ -110,7 +110,7 @@ chmod -R 755 /var/www/nextcloud/
 1.
 nano /var/www/nextcloud/config/config.php
 
-'overwrite.cli.url' => 'https://192.168.178.207/nextcloud', 
+'overwrite.cli.url' => 'https://<SERVER_IP>/nextcloud', 
 'overwriteprotocol' => 'https',
 
 

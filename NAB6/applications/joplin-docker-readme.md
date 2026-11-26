@@ -38,7 +38,7 @@ services:
     restart: unless-stopped
     environment:
       - APP_PORT=22300
-      - APP_BASE_URL=http://192.168.68.105:22300
+      - APP_BASE_URL=http://<SERVER_IP>:22300
       - DB_CLIENT=pg
       - POSTGRES_PASSWORD=testing123
       - POSTGRES_DATABASE=joplindb
@@ -79,7 +79,7 @@ These are the default login credentials for Joplin Server upon the first run. It
      docker compose up -d
      ```
 
-   - After startup, Joplin Server will be accessible at the `APP_BASE_URL` you've configured, e.g., `http://192.168.68.105:22300`.
+   - After startup, Joplin Server will be accessible at the `APP_BASE_URL` you've configured, e.g., `http://<SERVER_IP>:22300`.
 
 ## Initial Setup and Synchronization Configuration
 
@@ -100,7 +100,7 @@ To synchronize your Joplin notes across devices using your self-hosted Joplin Se
    - Under Synchronization target, select Joplin Server from the dropdown menu.
 
 3. **Enter Server URL**:
-   - In the URL field, enter your Joplin Server's URL, which is the `APP_BASE_URL` you set in your Docker Compose file (e.g., `http://192.168.68.105:22300`).
+   - In the URL field, enter your Joplin Server's URL, which is the `APP_BASE_URL` you set in your Docker Compose file (e.g., `http://<SERVER_IP>:22300`).
 
 4. **Input Credentials**:
    - Enter the username and password you have set for your Joplin Server admin account.
