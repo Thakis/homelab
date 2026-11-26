@@ -22,8 +22,8 @@ Edit SSH configuration:
 nano /etc/ssh/sshd_config
 ```
 Modify these lines:
-- `PermitRootLogin No`
-- Change SSH port to `65437`
+- `PermitRootLogin no`
+- Change the SSH port to a non-standard port of your choice (`Port <SSH_PORT>`)
 
 Restart SSH service:
 ```bash

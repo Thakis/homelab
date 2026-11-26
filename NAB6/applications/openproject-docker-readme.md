@@ -41,7 +41,7 @@ Important variables in the `.env` file:
 PORT=8080
 
 # Hostname or IP address (without http://)
-OPENPROJECT_HOST__NAME=192.168.178.215:8080
+OPENPROJECT_HOST__NAME=<SERVER_IP>:8080
 
 # Disable HTTPS if no reverse proxy with TLS is used
 OPENPROJECT_HTTPS=false

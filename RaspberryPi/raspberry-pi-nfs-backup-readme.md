@@ -12,13 +12,13 @@
 
 ### Manually Mount NFS Share
 ```bash
-sudo mount -t nfs 192.168.178.53:/volume2/raspberry /mnt/nfs_ds923
+sudo mount -t nfs <NAS_IP>:/volume<N>/<share_name> /mnt/nfs_ds923
 ```
 
 ### Permanent Mount Configuration
 Add to `/etc/fstab`:
 ```
-192.168.178.53:/volume2/raspberry /mnt/nfs_ds923 nfs defaults 0 0
+<NAS_IP>:/volume<N>/<share_name> /mnt/nfs_ds923 nfs defaults 0 0
 ```
 
 ## Step 2: Perform Backup
@@ -36,8 +36,8 @@ Location: `/usr/local/etc/raspiBackup.conf`
 ## Key Components
 
 - **NFS Mount Point**: `/mnt/nfs_ds923`
-- **NFS Server IP**: 192.168.178.53
-- **NFS Share Path**: `/volume2/raspberry`
+- **NFS Server IP**: <NAS_IP>
+- **NFS Share Path**: `/volume<N>/<share_name>`
 
 ## Troubleshooting
 
