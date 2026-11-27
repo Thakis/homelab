@@ -1,159 +1,72 @@
-# homelab
+# Homelab Documentation
 
-> This detailed repository provides a clear representation of a robust but still beginner friendly homelab setup that balances storage, network management, and application hosting with security and efficiency.
+> A clean, privacy-focused, and beginner-friendly homelab setup balancing reliable storage, network security, and self-hosted services.
 
-<img width="3862" height="5546" alt="Homelab_20261125" src="https://github.com/user-attachments/assets/052a6cd9-1031-43c8-a12b-63f09b23a2e1" />
-
-
-> The image showcases a comprehensive homelab network and system architecture diagram, including several interconnected components, applications, and services. Below is a detailed breakdown of the different sections visible in the diagram:
-
-### 1. **Core Infrastructure Overview**
-   - **Primary Hardware**: The homelab utilizes a Synology NAS (Synology DS923+) alongside a MinisForum NAB6 for Docker containers and Virtual Machine Manager (VMM). It also integrates external storage and a Thunderbolt 4 docking station for workstation management.
-   - **Network Backbone**: Currenty a Fritzbox router is the center of the network. Ethernet and wireless connections are configured for multiple devices. In the future there will be an additional UniFiSwitch.
-   - **Power Supply and UPS**: A UPS (uninterruptible power supply) provides backup power and surge protection to the critical systems.
-
-### 2. **NAS in Detail**
-   - The Synology NAS acts as the central hub for data storage and backups.
-   - An additional external NAS is via Tailscale connected. It serves as an external storage for the entire DS923+ system.
-
-### 3. **MinisForum in Detail**
-   - The MinisForum NAB 6 acts as the central hub for application hosting.
-   - **Docker Services**: Includes various containerized applications, such as:
-     - Media servers (Plex, Jellyfin, etc.).
-     - File sharing and synchronization tools (e.g., Nextcloud).
-     - Monitoring tools (Grafana, Prometheus).
-   - **Virtual Machines**: VMM instances host additional services or operating systems for tasks like testing or isolated operations.
-
-### 4. **Networking Components**
-   - **Routing and DNS**: Local DNS resolution and network-level ad-blocking (via Pi-hole + Unbound).
-   - **IoT Devices**: Managed through VLANs or dedicated network segments to enhance security.
-
-### 5. **Workstation Setup**
-   - The workstation setup connects various peripherals (e.g., monitors, printers) through a central Thunderbolt 4 docking station.
-   - Laptops, desktops, and additional devices are integrated for seamless productivity.
-   - **Backup Solutions**: Backups are routed to the NAS for data protection.
-
-### 6. **Remote Access and external Backups**
-   - **VPN**: Secure remote access is provided using WireGuard.
-   - **External Backup**: Data redundancy is maintained through services like Hyper Backup by Synology to an external NAS.
-   - **Monitoring**: Tools like Grafana and Prometheus visualize system health, resource usage, and logs.
-
-### 7. **Detailed Concepts and Diagrams**
-   - The bottom portion illustrates specific network use cases and configurations, including:
-     - A high-level layout of traffic routing.
-     - Device interconnectivity.
-     - External service interaction.
-
-### 8. **Redundant and Emergency Systems**
-   - Redundant configurations (e.g., multiple HDDs, RAID setups) are used to prevent downtime.
-   - Failover setups and power protection for critical devices are included.
+<img width="3862" height="5546" alt="Homelab Architecture Diagram" src="https://github.com/user-attachments/assets/052a6cd9-1031-43c8-a12b-63f09b23a2e1" />
 
 ---
 
+## 📑 Table of Contents
+- [Hardware Overview](#-hardware-overview)
+- [Network & Security](#-network--security)
+- [Services & Applications](#-services--applications)
+- [Backup Strategy](#-backup-strategy)
+- [Repository Structure](#-repository-structure)
 
+---
 
+## 🖥️ Hardware Overview
 
-# Home Server Setup: Comprehensive Guide
+| Device | Role | Key Components / Notes |
+| :--- | :--- | :--- |
+| **MinisForum NAB6** | Compute & Application Host | Runs Proxmox VE (VMs & LXC) and Docker containers |
+| **Synology DS923+** | Primary NAS & Storage | Central data hub, RAID redundancy, Hyper Backup |
+| **Raspberry Pi** | Network & Utility Node | Local DNS (Pi-hole + Unbound), Tailscale, NFS backups |
+| **External NAS** | Off-site Backup Target | Connected securely via Tailscale |
+| **FRITZ!Box** | Router & Gateway | Main internet gateway *(UniFi Switch planned for future)* |
+| **UPS** | Power Protection | Backup power & surge protection for critical hardware |
 
-## Video Tutorial Playlist
+---
 
-### Infrastructure and Basic Setup
-1. [ApfelCast: Docker Container unter Proxmox](https://www.youtube.com/playlist)
-2. [Raspberry Pi Cloud: ZERO TO HERO - Raspberry Pi Installation + Docker + Portainer](https://www.youtube.com/playlist)
-3. [The Digital Life: Portainer Install Ubuntu Tutorial](https://www.youtube.com/playlist)
+## 🔒 Network & Security
 
-### Networking and Proxy
-1. [Raspberry Pi Cloud: NGINX Proxy Manager - Reverse Proxy Explanation and Installation](https://www.youtube.com/playlist)
-2. [Raspberry Pi Cloud: NGINX Proxy Manager - Setup and Let's Encrypt Certificates](https://www.youtube.com/playlist)
-3. [ApfelCast: Nginx Proxy Manager - Reverse Proxy with Graphical Interface](https://www.youtube.com/playlist)
+- **DNS & Ad-Blocking:** Local DNS resolution and network-wide ad-blocking using **Pi-hole + Unbound**.
+- **Remote Access:** Secure VPN access via **WireGuard** (personal devices) and **Tailscale** (site-to-site / off-site NAS connection).
+- **Segmentation:** Dedicated network segments / VLANs for IoT devices to isolate them from the core network.
+- **Reverse Proxy & SSL:** Managed access to internal services with SSL encryption.
 
-### Security and VPN
-1. [USB Akimbo Reformed: WireGuard VPN Server with Docker](https://www.youtube.com/playlist)
-2. [Andreas Spiess: Wireguard and NextCloud on Raspberry Pi](https://www.youtube.com/playlist)
+---
 
-### Applications and Monitoring
-1. [The Digital Life: Nextcloud with Nginx Proxy Manager](https://www.youtube.com/playlist)
-2. [Raspberry Pi Cloud: ZERO TO HERO - Grafana Monitoring](https://www.youtube.com/playlist)
+## 🚀 Services & Applications
 
-## Recommended Setup Sequence
+* **Media:** Jellyfin / Plex
+* **Cloud & Productivity:** Nextcloud
+* **Password Management:** Vaultwarden / Bitwarden
+* **Monitoring & Observability:** Grafana, Prometheus
+* **Container Management:** Docker, Docker Compose, Portainer
 
-### 1. Infrastructure Preparation
-- Choose hardware (Raspberry Pi or alternative)
-- Install base operating system (Ubuntu/Raspbian)
-- Set up basic network configuration
+*(Note: All sensitive configurations, IPs, and credentials are omitted from this repository for security reasons.)*
 
-### 2. Docker Installation
-- Install Docker
-- Install Docker Compose
-- Configure system permissions
+---
 
-### 3. Container Management
-- Install Portainer for easy container management
-- Set up user access and permissions
+## 💾 Backup Strategy
 
-### 4. Networking and Security
-- Install NGINX Proxy Manager
-- Configure reverse proxy
-- Set up Let's Encrypt SSL certificates
+- **Local Redundancy:** RAID configuration on the Synology DS923+ to protect against drive failures.
+- **Automated Backups:** Workstation and server backups routed to the primary NAS.
+- **Off-site Backup:** Encrypted backups via **Synology Hyper Backup** to an external NAS connected over Tailscale.
 
-### 5. Essential Services
-- Install WireGuard VPN
-- Deploy Nextcloud
-- Set up Bitwarden password manager
+---
 
-### 6. Monitoring and Observability
-- Install Grafana
-- Configure system monitoring
-- Set up dashboards
+## 📂 Repository Structure
 
-## Key Tools and Services
+Detailed setup notes and configurations are organized by host:
 
-| Service | Purpose | Docker-Friendly | Notes |
-|---------|---------|-----------------|-------|
-| Docker | Containerization | Yes | Core infrastructure |
-| Portainer | Container Management | Yes | Graphical interface |
-| NGINX Proxy Manager | Reverse Proxy | Yes | SSL and domain routing |
-| WireGuard | VPN | Yes | Secure remote access |
-| Nextcloud | File Sync/Share | Yes | Private cloud storage |
-| Bitwarden | Password Management | Yes | Secure credential storage |
-| Grafana | Monitoring | Yes | System and service metrics |
+- [`NAB6/`](./NAB6) – Proxmox setup, SSH containers, and application hosting notes
+- [`RaspberryPi/`](./RaspberryPi) – Pi-hole, Unbound, Tailscale, and NFS backup configurations
+- [`Synology DS923+/`](./Synology%20DS923+/) – NAS setup and backup documentation
 
-## Best Practices
+---
 
-- Always use strong, unique passwords
-- Keep systems and containers updated
-- Use Docker networks for isolation
-- Implement regular backups
-- Use Let's Encrypt for SSL certificates
-- Monitor system resources
+## 📝 Disclaimer
 
-## Security Recommendations
-
-- Disable root SSH login
-- Use key-based authentication
-- Implement fail2ban
-- Regular security updates
-- Use VPN for remote access
-- Limit container privileges
-
-## Troubleshooting Resources
-
-- Docker documentation
-- Portainer community forums
-- NGINX Proxy Manager GitHub
-- Raspberry Pi forums
-- Docker compose guides
-
-## Community and Learning
-
-- [Docker Official Documentation](https://docs.docker.com/)
-- [Portainer Documentation](https://documentation.portainer.io/)
-- [NGINX Proxy Manager GitHub](https://github.com/NginxProxyManager/nginx-proxy-manager)
-- Reddit communities: r/homelab, r/selfhosted
--  [Bitdoze - Best 100+ Docker Containers for Home Server](https://www.bitdoze.com/docker-containers-home-server/)
-
-## Disclaimer
-
-This guide is a compilation of community resources. Always test in a safe environment and understand each step before implementation.
-
-Claude.ai was used to help me to write the repository. Unstuckstudy.com was used to summarize some YouTube videos.
+This repository documents my personal homelab setup for educational purposes and inspiration. Always test configurations in a safe environment before applying them to your own network.

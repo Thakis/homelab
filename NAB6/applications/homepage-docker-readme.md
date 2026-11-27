@@ -16,7 +16,7 @@ Create a directory for Homepage configuration:
 ```bash
 mkdir -p ~/homepage
 cd ~/homepage
-````
+```
 
 ## 3. Create Docker Compose File
 
@@ -37,7 +37,7 @@ services:
       - 3000:3000
 #    env_file: /root/homepage/.env  
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: gethomepage.dev,192.168.178.215:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      HOMEPAGE_ALLOWED_HOSTS: gethomepage.dev,<SERVER_IP>:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
       PUID: $PUID
       PGID: $PGID
     restart: unless-stopped
